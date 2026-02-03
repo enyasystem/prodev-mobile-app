@@ -1,11 +1,1 @@
-import { View, Text } from "react-native";
-
-const Search = () => {
-  return (
-      <View>
-        <Text>Search Screen</Text>
-      </View>
-  )
-}
-
-export default Search;
+// Search screen is disabled in _layout.tsx

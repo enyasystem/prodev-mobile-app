@@ -1,3 +1,1 @@
-import HomeRootLayout from './_layout';
-
-export default HomeRootLayout;
+// This file should not be used. All routes are defined in _layout.tsx
