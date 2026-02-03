@@ -1,4 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
+const isSmallDevice = width < 400;
 
 const styles = StyleSheet.create({
   container: {
@@ -7,8 +10,8 @@ const styles = StyleSheet.create({
   },
   searchGroup: {
     backgroundColor: "#34967C",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: isSmallDevice ? 12 : 16,
+    paddingVertical: isSmallDevice ? 10 : 12,
   },
   searchFormGroup: {
     flexDirection: "row",
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 8,
     paddingHorizontal: 12,
-    height: 50,
+    height: isSmallDevice ? 44 : 50,
     gap: 8,
   },
   searchControlGroup: {
@@ -25,38 +28,38 @@ const styles = StyleSheet.create({
   },
   searchControl: {
     flex: 1,
-    fontSize: 14,
+    fontSize: isSmallDevice ? 12 : 14,
     color: "#333",
   },
   searchFormText: {
-    fontSize: 14,
+    fontSize: isSmallDevice ? 12 : 14,
     fontWeight: "500",
     color: "#666",
   },
   searchButton: {
     backgroundColor: "#34967C",
-    width: 44,
-    height: 44,
+    width: isSmallDevice ? 40 : 44,
+    height: isSmallDevice ? 40 : 44,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
   },
   filterGroup: {
     flexDirection: "row",
-    paddingHorizontal: 16,
-    gap: 12,
+    paddingHorizontal: isSmallDevice ? 12 : 16,
+    gap: isSmallDevice ? 10 : 12,
     paddingVertical: 8,
   },
   filterContainer: {
     alignItems: "center",
     justifyContent: "center",
     gap: 4,
-    minWidth: 70,
+    minWidth: isSmallDevice ? 60 : 70,
   },
   listingContainer: {
     flex: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: isSmallDevice ? 12 : 16,
+    paddingVertical: isSmallDevice ? 8 : 12,
   },
   paginationContainer: {
     alignItems: "center",
@@ -64,13 +67,13 @@ const styles = StyleSheet.create({
   },
   showMoreButton: {
     backgroundColor: "#34967C",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
+    paddingVertical: isSmallDevice ? 10 : 12,
+    paddingHorizontal: isSmallDevice ? 24 : 32,
     borderRadius: 8,
   },
   showMoreButtonText: {
     color: "white",
-    fontSize: 16,
+    fontSize: isSmallDevice ? 14 : 16,
     fontWeight: "600",
   },
 });

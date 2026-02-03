@@ -1,16 +1,29 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
+const isSmallDevice = width < 400;
+const isLargeDevice = width > 600;
+
+const cardHeight = isSmallDevice ? 280 : isLargeDevice ? 450 : 380;
+const cardPadding = isSmallDevice ? 12 : 16;
+const favoriteSize = isSmallDevice ? 40 : 48;
+const starSize = isSmallDevice ? 32 : 40;
+const titleFontSize = isSmallDevice ? 24 : 30;
+const subtitleFontSize = isSmallDevice ? 12 : 15;
+const priceFontSize = isSmallDevice ? 15 : 17;
+const rateTextSize = isSmallDevice ? 16 : 20;
 
 const styles = StyleSheet.create({
     container: {
-      height: 400,
+      height: cardHeight,
       borderRadius: 10,
       overflow: "hidden",
-      marginBottom: 16,
+      marginBottom: cardPadding,
     },
     overlay: {
-      height: 400,
+      height: cardHeight,
       backgroundColor: "rgba(0,0,0,0.3)",
-      padding: 16,
+      padding: cardPadding,
       justifyContent: "space-between",
     },
     favoriteGroup: {
@@ -18,9 +31,9 @@ const styles = StyleSheet.create({
     },
     favoriteOverlay: {
       backgroundColor: "rgba(0,0,0,0.4)",
-      width: 48,
-      height: 48,
-      borderRadius: 24,
+      width: favoriteSize,
+      height: favoriteSize,
+      borderRadius: favoriteSize / 2,
       alignItems: "center",
       justifyContent: "center",
     },
@@ -30,45 +43,49 @@ const styles = StyleSheet.create({
       columnGap: 5,
     },
     rateText: {
-      fontSize: 20,
+      fontSize: rateTextSize,
       color: "#fff",
       fontWeight: "500",
       marginLeft: 4,
     },
     priceGroup: {
       backgroundColor: "#F9F9F9",
-      width: 104,
-      height: 45,
+      paddingHorizontal: 16,
+      paddingVertical: 10,
       borderRadius: 30,
       alignItems: "center",
       justifyContent: "center",
     },
     priceText: {
-      fontSize: 17,
+      fontSize: priceFontSize,
       fontWeight: "500",
     },
     cardTextGroup: {
-      width: 205,
+      flex: isSmallDevice ? 0.7 : 0.6,
+      marginRight: isSmallDevice ? 12 : 20,
     },
     cardLargeText: {
-      fontSize: 30,
+      fontSize: titleFontSize,
       fontWeight: "600",
       color: "#fff",
     },
     cardSmallText: {
-      fontSize: 15,
+      fontSize: subtitleFontSize,
       fontWeight: "400",
       color: "#fff",
     },
     cardGroup: {
       flexDirection: "row",
-      columnGap: 40,
+      columnGap: isSmallDevice ? 20 : 40,
       alignItems: "center",
+      justifyContent: "space-between",
+      flex: 1,
     },
     group: {
       position: "absolute",
-      bottom: 30,
-      left: 30,
+      bottom: isSmallDevice ? 20 : 30,
+      left: isSmallDevice ? 16 : 30,
+      right: isSmallDevice ? 16 : "auto",
     },
   });
 
