@@ -19,10 +19,11 @@ const Home = () => {
       <View style={styles.searchGroup}>
         <View style={styles.searchFormGroup}>
           <View style={styles.searchControlGroup}>
-            <Text style={styles.searchFormText}>Where to?</Text>
             <TextInput
-              style={{ ...styles.searchControl, ...styles.searchFormText }}
-              placeholder="Location . Date . Add guest"
+              style={styles.searchControl}
+              placeholder="Where to? Location . Date . Add guest"
+              placeholderTextColor="#666"
+              editable={true}
             />
           </View>
           <View style={styles.searchButton}>

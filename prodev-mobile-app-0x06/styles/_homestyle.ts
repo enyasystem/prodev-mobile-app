@@ -28,8 +28,10 @@ const styles = StyleSheet.create({
   },
   searchControl: {
     flex: 1,
-    fontSize: isSmallDevice ? 12 : 14,
+    fontSize: isSmallDevice ? 13 : 15,
     color: "#333",
+    paddingVertical: 8,
+    paddingHorizontal: 8,
   },
   searchFormText: {
     fontSize: isSmallDevice ? 12 : 14,
