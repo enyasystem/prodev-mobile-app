@@ -11,11 +11,11 @@ const HomeRootLayout = () => {
         title: 'Home',
         tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
       }} />
-      <Tabs.Screen name="search" options={{
+      {/* <Tabs.Screen name="search" options={{
         title: 'Search',
         headerShown: true,
         tabBarIcon: ({ color }) => <Feather name="search" size={24} color={color} />,
-      }} />
+      }} /> */}
       <Tabs.Screen name="saved" options={{
         title: 'Saved',
         headerShown: true,
@@ -28,6 +28,7 @@ const HomeRootLayout = () => {
       }} />
         <Tabs.Screen name="profile" options={{
         title: 'Profile',
+        headerShown: true,
         tabBarIcon: ({ color }) => <FontAwesome name="user-o" size={24} color="black" />
       }} />
     </Tabs>
