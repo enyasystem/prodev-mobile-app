@@ -23,6 +23,8 @@ export default function JoinScreen() {
 
   const handleJoin = () => {
     console.log('Join with:', { fullName, email, password, confirmPassword });
+    // Dev: navigate into the app to the Profile tab after join
+    router.replace('/profile');
   };
 
   const handleGoogleSignUp = () => {

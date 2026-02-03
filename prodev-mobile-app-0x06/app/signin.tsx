@@ -22,6 +22,8 @@ export default function SignInScreen() {
   const handleSignIn = () => {
     // Handle sign in logic
     console.log('Sign In with:', { email, password });
+    // Dev: navigate into the app to the Profile tab after sign in
+    router.replace('/profile');
   };
 
   const handleGoogleSignIn = () => {
