@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import {
     Image,
+    ImageBackground,
     SafeAreaView,
     ScrollView,
     StyleSheet,
@@ -12,6 +13,8 @@ import {
     useColorScheme,
     View,
 } from "react-native";
+import { BACKGROUNDIMAGE, HEROLOGO } from "@/constants";
+import { styles as mainStyles } from "@/styles/_mainstyle";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -24,7 +27,12 @@ export default function HomeScreen() {
   const textSecondary = isDark ? "#a1a1a1" : "#64748b";
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor }]}>
+    <ImageBackground 
+      source={BACKGROUNDIMAGE}
+      style={{ flex: 1 }}
+      resizeMode="cover"
+    >
+      <SafeAreaView style={[styles.container, { backgroundColor: "rgba(0,0,0,0.3)" }]}>
       {/* Background Gradients */}
       <LinearGradient
         colors={
@@ -52,131 +60,42 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
       >
         {/* Top Half: Hero Visual */}
-        <View style={styles.heroContainer}>
-          {/* Soft Glow Behind Checkmark */}
-          <View
-            style={[
-              styles.glow,
-              {
-                backgroundColor: isDark
-                  ? "rgba(212,17,17,0.3)"
-                  : "rgba(212,17,17,0.25)",
-              },
-            ]}
+        <View style={mainStyles.logoContainer}>
+          <Image 
+            source={HEROLOGO}
+            style={{ width: 120, height: 120, resizeMode: 'contain' }}
           />
+        </View>
 
-          {/* Glassmorphic Checkmark Container */}
-          <View
-            style={[
-              styles.checkmarkContainer,
-              {
-                backgroundColor: isDark
-                  ? "rgba(255,255,255,0.08)"
-                  : "rgba(255,255,255,0.3)",
-                borderColor: isDark
-                  ? "rgba(255,255,255,0.08)"
-                  : "rgba(255,255,255,0.4)",
-              },
-            ]}
-          >
-            <MaterialIcons name="check-circle" size={64} color="#d41111" />
+        {/* Title Section */}
+        <View style={mainStyles.titleContainer}>
+          <Text style={mainStyles.titleText}>ProDev</Text>
+          <View style={mainStyles.titleSubTextContainer}>
+            <Text style={mainStyles.titleSubText}>
+              Learn to Code. Build Your Future.
+            </Text>
           </View>
         </View>
 
-        {/* Bottom Half: Content Card */}
-        <View style={[styles.contentCard, { backgroundColor: cardBackground }]}>
-          {/* Headline */}
-          <Text style={[styles.headline, { color: textPrimary }]}>
-            Welcome to Ochanja
-          </Text>
-
-          {/* Body Text */}
-          <Text style={[styles.bodyText, { color: textSecondary }]}>
-            Your account has been created successfully. Connect with top vendors
-            and discover premium products today.
-          </Text>
-
-          {/* User Profile Card */}
-          <View
-            style={[
-              styles.profileCard,
-              {
-                backgroundColor: isDark
-                  ? "rgba(255,255,255,0.05)"
-                  : "rgba(100,116,139,0.05)",
-                borderColor: isDark
-                  ? "rgba(255,255,255,0.1)"
-                  : "rgba(226,232,240,1)",
-              },
-            ]}
+        {/* Bottom Half: Action Buttons */}
+        <View style={mainStyles.buttonGroup}>
+          <TouchableOpacity
+            style={mainStyles.buttonPrimary}
+            onPress={() => router.push("/join")}
           >
-            <View style={styles.profileContent}>
-              <Image
-                source={{
-                  uri: "https://lh3.googleusercontent.com/aida-public/AB6AXuAoEV1ra2_RIKm573fAyHAx7mD1rkiCxqN055QlssHZMF6o2Dab_dzAEoxwqzPAccgBAY7qTpN-4EaygJ54BuRTBoY73xuq_OmBrMmYEGhhPr6-6SGmbAqhph2aC5_BsKJL0ok2y_6hGtEce61g8m0aLSPw8zGQc-xkisEnKLs3KAGtiSFhGuFdJC8nMXJ2xRMWgvAw21nEVY97yc_fkvHiTZIV88jO3ingSkyNUkg2Rv6PdauUbUw05c0pq_dN8pm2p72r06GoWg",
-                }}
-                style={styles.profileImage}
-              />
-              <View style={styles.profileInfo}>
-                <Text
-                  style={[
-                    styles.profileLabel,
-                    { color: isDark ? "#a1a1a1" : "#94a3b8" },
-                  ]}
-                >
-                  YOU'RE LOGGED IN AS
-                </Text>
-                <Text style={[styles.profileName, { color: textPrimary }]}>
-                  Chinedu Okafor
-                </Text>
-              </View>
-            </View>
-            <MaterialIcons
-              name="verified-user"
-              size={20}
-              color={isDark ? "#4b5563" : "#cbd5e1"}
-            />
-          </View>
+            <Text style={mainStyles.buttonPrimaryText}>Get Started</Text>
+          </TouchableOpacity>
 
-          {/* Action Buttons */}
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.primaryButton}
-              onPress={() => router.push("/join")}
-              activeOpacity={0.9}
-            >
-              <LinearGradient
-                colors={["#d41111", "#b00d0d"]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={styles.buttonGradient}
-              >
-                <Text style={styles.primaryButtonText}>Start Exploring</Text>
-              </LinearGradient>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={[
-                styles.secondaryButton,
-                {
-                  backgroundColor: isDark ? "rgba(255,255,255,0.1)" : "#f1e8e8",
-                },
-              ]}
-              onPress={() => router.push("/signin")}
-            >
-              <Text
-                style={[
-                  styles.secondaryButtonText,
-                  { color: isDark ? "#ffffff" : "#334155" },
-                ]}
-              >
-                Visit My Dashboard
-              </Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={mainStyles.buttonSecondary}
+            onPress={() => router.push("/signin")}
+          >
+            <Text style={mainStyles.buttonSecondaryText}>Sign In</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
+    </ImageBackground>
   );
 }
 
