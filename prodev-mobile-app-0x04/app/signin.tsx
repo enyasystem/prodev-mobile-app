@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import { styles } from '@/styles/_joinstyle';
+import { GOOGLELOGO, FACEBOOKLOGO } from '@/constants';
 
 export default function SignInScreen() {
   const router = useRouter();
@@ -108,7 +110,7 @@ export default function SignInScreen() {
             style={[styles.secondaryButton, { borderColor: '#E9E9E9' }]}
             onPress={handleGoogleSignIn}
           >
-            <MaterialIcons name="mail" size={24} color="black" />
+            <Image source={GOOGLELOGO} style={{ width: 24, height: 24 }} />
             <Text style={styles.secondaryButtonText}>Google</Text>
           </TouchableOpacity>
 
@@ -116,7 +118,7 @@ export default function SignInScreen() {
             style={[styles.secondaryButton, { borderColor: '#E9E9E9' }]}
             onPress={handleFacebookSignIn}
           >
-            <MaterialIcons name="people" size={24} color="#1877F2" />
+            <Image source={FACEBOOKLOGO} style={{ width: 24, height: 24 }} />
             <Text style={styles.secondaryButtonText}>Facebook</Text>
           </TouchableOpacity>
         </View>

@@ -6,9 +6,11 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import { GOOGLELOGO, FACEBOOKLOGO } from '@/constants';
 
 export default function JoinScreen() {
   const router = useRouter();
@@ -211,7 +213,7 @@ export default function JoinScreen() {
             }}
             onPress={handleGoogleSignUp}
           >
-            <FontAwesome name="google" size={20} color="#EA4335" />
+            <Image source={GOOGLELOGO} style={{ width: 20, height: 20 }} />
             <Text style={{ fontSize: 16, fontWeight: '400', color: '#000' }}>Google</Text>
           </TouchableOpacity>
 
@@ -228,7 +230,7 @@ export default function JoinScreen() {
             }}
             onPress={handleFacebookSignUp}
           >
-            <FontAwesome name="facebook" size={20} color="#1877F2" />
+            <Image source={FACEBOOKLOGO} style={{ width: 20, height: 20 }} />
             <Text style={{ fontSize: 16, fontWeight: '400', color: '#000' }}>Facebook</Text>
           </TouchableOpacity>
         </View>
