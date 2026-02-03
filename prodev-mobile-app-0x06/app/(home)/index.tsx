@@ -10,11 +10,12 @@ import {
   Dimensions,
   TouchableHighlight,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { FILTERS, SAMPLE_DATA } from "@/constants/data";
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["top"]}>
       <View style={styles.searchGroup}>
         <View style={styles.searchFormGroup}>
           <View style={styles.searchControlGroup}>
@@ -62,7 +63,7 @@ const Home = () => {
           </TouchableHighlight>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
